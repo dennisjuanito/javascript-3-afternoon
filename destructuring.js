@@ -56,6 +56,11 @@ function greeting( obj ) {
 */
 
 //Code Here
+function totalPopulation(obj) {
+
+  var {utah, california, texas, arizona} = obj;
+  return utah + california + texas + arizona;
+}
 
 
 
@@ -70,7 +75,10 @@ function greeting( obj ) {
 */
 
 //Code Here
-
+let ingredients = function(obj) {
+  let {carb, fat, protein} = obj;
+  return [carb, fat, protein];
+}
 
 
 ////////// PROBLEM 5 //////////
@@ -88,6 +96,9 @@ function greeting( obj ) {
 */
 
 //Code Here
+function largeNumbers({first, second, third}) {
+  return Math.min(first, second, third);
+}
 
 
 
@@ -100,5 +111,9 @@ function greeting( obj ) {
 */
 
 //Code Here
+function numberGroups({a, b, c}) {
+  largestLength = Math.max(a.length, b.length, c.length);
+  return (a.length === largestLength) ? a : (b.length === largestLength) ? b : c;
+}
 
 

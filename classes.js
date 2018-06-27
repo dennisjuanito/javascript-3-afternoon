@@ -111,27 +111,38 @@ class ProgressiveManager {
     this.age        = age;
     this.email      = email;
     this.reports    = [];
-    this.title = "Not a manager";
+    this.title      = "Not a manager";
     this.bonus = 0;
   }
 
   hire(employee) {
+    this.updateTitle();
     this.reports.push(employee);
 
   }
 
   fire(index) {
+    this.updateTitle();
     this.reports.splice(index, 1);
     this.bonus += 100;
+    
   }
 
-  //updateTitle(employee) {
-  //  if () {
-
-  //  }
-  //}
-
-
+  updateTitle() {
+    if (this.reports.length >= 101) {
+      this.title = "Bestest Manager";
+    } else if (this.reports.length <= 100 && this.reports.length >= 51) {
+      this.title = "Manager Plus";
+    } else if (this.reports.length > 10 && this.reports.length < 51) {
+      this.title = "Manager";
+    } else if (this.reports.length <= 10 && this.reports.length >= 4) {
+      this.title = "Mostly Manager";
+    } else if (this.reports.length > 0 && this.reports.length < 4) {
+      this.title = "Barely Manager";
+    } else if (this.reports.length == 0) {
+      this.title = "Not a manager";
+    } 
+  }
 }
 
 
@@ -168,9 +179,9 @@ class Machine {
   }
   makeWidgets(num) {
     this.widgets_made_count += num;
-    if (this.widgets_made_count % 50 === 0) {
-      this.widgets_made_count++;
-    }
+    this.wear_and_tear_count += Math.floor(num / 50)
+
+
   }
 
   fixMachine() {
@@ -178,9 +189,10 @@ class Machine {
   }
 
   reboot() {
-      this.wear_and_tear_count -= 10;
+    return function() {
+      this.wear_and_tear_count  -= 10;
       this.needs_reboot          = false;
-    
+    }   
   }
 }
 

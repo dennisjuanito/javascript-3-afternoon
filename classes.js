@@ -116,15 +116,16 @@ class ProgressiveManager {
   }
 
   hire(employee) {
-    this.updateTitle();
     this.reports.push(employee);
+    this.updateTitle();
+    
 
   }
 
   fire(index) {
-    this.updateTitle();
     this.reports.splice(index, 1);
     this.bonus += 100;
+    this.updateTitle();
     
   }
 
@@ -139,7 +140,7 @@ class ProgressiveManager {
       this.title = "Mostly Manager";
     } else if (this.reports.length > 0 && this.reports.length < 4) {
       this.title = "Barely Manager";
-    } else if (this.reports.length == 0) {
+    } else  {
       this.title = "Not a manager";
     } 
   }
@@ -189,10 +190,10 @@ class Machine {
   }
 
   reboot() {
-    return function() {
+    return () => {
       this.wear_and_tear_count  -= 10;
       this.needs_reboot          = false;
-    }   
+    };   
   }
 }
 
